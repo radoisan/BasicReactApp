@@ -1,0 +1,22 @@
+[
+  {
+    "statusCode": 200,
+    "data": {
+      "name": "product1",
+      "price": 3.14,
+      "color": "red"
+    }
+  },
+  {
+    "statusCode": 404,
+    "headers": {
+      "x-message": "Product not found"
+    }
+  },
+  {
+    "statusCode": 401,
+    "headers": {
+      "x-message": "You are not authorized"
+    }
+  }
+]
