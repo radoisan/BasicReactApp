@@ -23,6 +23,9 @@ const HomeLayout = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.logout());
+
+    removeItemLocalStorage("password");
+    removeItemLocalStorage("username");
   };
 
   const httpRequest = (data, index) => {
