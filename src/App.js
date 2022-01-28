@@ -9,6 +9,8 @@ import { getWithExpiry } from "./utils";
 
 import { useNavigate } from "react-router-dom";
 
+const FIVE_MIN_EXPIRY = 1000 * 60 * 5;
+
 function App() {
   const [counterExpired, setCounterExpired] = useState(false);
 
@@ -17,7 +19,7 @@ function App() {
   setTimeout(() => {
     setCounterExpired(true);
     navigate("/login");
-  }, 300000);
+  }, FIVE_MIN_EXPIRY);
 
   useEffect(() => {
     getWithExpiry("username");

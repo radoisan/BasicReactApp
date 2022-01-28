@@ -28,6 +28,7 @@ const HomeLayout = () => {
   const httpRequest = (data, index) => {
     if (data.statusCode === 200) {
       setProductData(data.data);
+      setRequestError();
       console.log("PRODUCT DATA:", data.data);
     }
     if (data.statusCode === 404) {

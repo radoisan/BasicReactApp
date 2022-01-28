@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 //5 minutes in miliseconds
-const FIVE_MIN_EXPIRY = 300000;
+const FIVE_MIN_EXPIRY = 1000 * 60 * 5;
 
 const isEmpty = (value) => value.trim().length > 0;
 
