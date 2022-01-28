@@ -1,14 +1,35 @@
 import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Layout from "./components/Layout/Layout";
 
+import { getWithExpiry } from "./utils";
+
+import { useNavigate } from "react-router-dom";
+
 function App() {
+  const [counterExpired, setCounterExpired] = useState(false);
+
+  const navigate = useNavigate();
+
+  setTimeout(() => {
+    setCounterExpired(true);
+    navigate("/login");
+  }, 300000);
+
+  useEffect(() => {
+    getWithExpiry("username");
+    getWithExpiry("password");
+    setCounterExpired(false);
+  }, [counterExpired]);
+
   return (
     <div>
       <Layout>
         <Routes>
+          {console.log("COUNTER: ", counterExpired)}
           <Route path="*" exact element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
