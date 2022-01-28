@@ -27,3 +27,7 @@ export const getWithExpiry = (key) => {
   }
   return item.value;
 };
+
+export const removeItemLocalStorage = (key) => {
+  localStorage.removeItem(key);
+};

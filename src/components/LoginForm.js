@@ -8,6 +8,8 @@ import { authActions } from "../store/auth";
 
 import { useNavigate } from "react-router-dom";
 
+import { useState } from "react";
+
 //5 minutes in miliseconds
 const FIVE_MIN_EXPIRY = 300000;
 
@@ -20,6 +22,8 @@ const serverData = {
 };
 
 const LoginForm = (props) => {
+  const [userExist, setUserExist] = useState(true);
+
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -71,17 +75,16 @@ const LoginForm = (props) => {
     };
 
     if (isUserExist(loginData)) {
-      console.log("User exist");
+      setUserExist(true);
       dispatch(authActions.login());
       navigate("/home");
 
       setWithExpiry(`username`, username, FIVE_MIN_EXPIRY);
       setWithExpiry(`password`, password, FIVE_MIN_EXPIRY);
     } else {
-      console.log("User not exist");
+      setUserExist(false);
+      return;
     }
-
-    console.log(loginData);
 
     resetUsername();
     resetPassword();
@@ -130,6 +133,7 @@ const LoginForm = (props) => {
       <div className={classes.actions}>
         <button className={classes.submit}>Login</button>
       </div>
+      <div>{!userExist && <p>User does not exist!</p>}</div>
     </form>
   );
 };
