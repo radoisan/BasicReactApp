@@ -56,6 +56,13 @@ const LoginForm = (props) => {
     reset: resetPassword,
   } = useInput(isEmpty);
 
+  // const userNameCached = localStorage.getItem("username");
+  // const userPasswordCached = localStorage.getItem("password");
+  // //should handle case where user and pass are in local storage..
+
+  // if (userNameCached && userPasswordCached) {
+  // }
+
   let formIsValid = false;
 
   if (usernameIsValid && passwordIsValid) {
